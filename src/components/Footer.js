@@ -87,10 +87,6 @@ function renderFooter() {
               </a>
             </li>
             <li>
-              <span style="display:block; font-size:0.75rem; color:#888; text-transform:uppercase; letter-spacing:0.05em;">Online Classes Via</span>
-              <span style="font-size:0.875rem; color:#ccc;">Google Meet & Zoom</span>
-            </li>
-            <li>
               <span style="display:block; font-size:0.75rem; color:#888; text-transform:uppercase; letter-spacing:0.05em;">Serving Families In</span>
               <span style="font-size:0.875rem; color:#ccc;">Kerala, India & Gulf Countries (UAE, KSA, Qatar, Oman, Kuwait, Bahrain)</span>
             </li>
