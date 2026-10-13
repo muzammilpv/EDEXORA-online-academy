@@ -250,8 +250,10 @@ const requestListener = async (req, res) => {
     const ext = path.extname(targetFilePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
-    // Caching for static assets
-    if (ext === '.css' || ext === '.js' || ext === '.jpg' || ext === '.jpeg' || ext === '.png' || ext === '.svg') {
+    // Caching for static assets (revalidate CSS & JS immediately, cache media assets)
+    if (ext === '.css' || ext === '.js') {
+      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+    } else if (ext === '.jpg' || ext === '.jpeg' || ext === '.png' || ext === '.svg' || ext === '.webp') {
       res.setHeader('Cache-Control', 'public, max-age=86400');
     } else {
       res.setHeader('Cache-Control', 'no-cache');

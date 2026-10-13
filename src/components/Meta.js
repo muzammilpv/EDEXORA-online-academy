@@ -50,7 +50,7 @@ function renderMeta({ title, description, canonicalPath, schemaType = 'Education
   <link rel="apple-touch-icon" href="/assets/images/logo.jpeg">
 
   <!-- Core CSS -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=2.2">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
