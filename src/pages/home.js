@@ -8,7 +8,7 @@ const renderEnquiryForm = require('../components/EnquiryForm');
 
 function renderHomePage() {
   const metaHtml = renderMeta({
-    title: 'School Tuition, Madrasa Education & Language Learning in One Place',
+    title: 'School & Madrasa Education in One Place',
     description: 'Personalised online learning designed around your child’s needs, learning goals, and schedule. One-to-one tuition for Kerala & Gulf families.',
     canonicalPath: '/'
   });
@@ -82,7 +82,7 @@ function renderHomePage() {
           <div class="hero-content">
             <span class="eyebrow">Personalised Online Tuition</span>
             <h1 class="hero-headline">
-              School Tuition, Madrasa Education &amp; Language Learning <span class="highlight">in One Place</span>
+              School &amp; Madrasa Education <span class="highlight">in One Place</span>
             </h1>
             <p class="hero-supporting-copy">
               Personalised online learning designed around your child’s needs, learning goals, and schedule. Discover one-to-one educational support for school subjects, Madrasa studies, and language learning with EDEXORA.

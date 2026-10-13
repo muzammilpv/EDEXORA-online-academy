@@ -97,9 +97,8 @@ async function runTests() {
   await new Promise(resolve => server.listen(TEST_PORT, resolve));
 
   try {
-    // Test Clean URL Routes
     const routesToTest = [
-      { path: '/', expectedText: 'School Tuition, Madrasa Education & Language Learning' },
+      { path: '/', expectedText: 'School & Madrasa Education' },
       { path: '/about', expectedText: 'About EDEXORA' },
       { path: '/school-tuition', expectedText: 'Personalised Online School Tuition' },
       { path: '/madrasa-education', expectedText: 'Personalised Online Madrasa Education' },
