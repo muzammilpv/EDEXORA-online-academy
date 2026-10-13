@@ -40,7 +40,7 @@ function renderAboutPage() {
     <!-- Section: About EDEXORA -->
     <section class="section section-alt">
       <div class="container">
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items:center;">
+        <div class="split-layout-grid">
           <div>
             <span class="eyebrow">Who We Are</span>
             <h2 class="section-title">Personalised Learning for Every Student</h2>
@@ -50,14 +50,14 @@ function renderAboutPage() {
             <p style="font-size: 0.9375rem; line-height: 1.7; color: var(--color-text-secondary); margin-bottom: 28px;">
               We understand that every child has distinct strengths, learning speeds, and areas that require extra patience. Rather than group classrooms where individual doubts are easily overlooked, EDEXORA centers education around one-to-one mentorship tailored directly to the student.
             </p>
-            <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <div class="page-header-actions" style="display:flex; gap:16px; flex-wrap:wrap;">
               <button type="button" class="btn btn-primary" data-open-demo>Book a Free Demo</button>
               <a href="/courses" class="btn btn-secondary">Explore Courses</a>
             </div>
           </div>
           <div>
             <div style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--color-border);">
-              <img src="/assets/images/hero_online_learning.jpg" alt="Dedicated online tuition session with student and tutor" width="700" height="480" loading="lazy">
+              <img src="/assets/images/hero_online_learning.jpg" alt="Dedicated online tuition session with student and tutor" width="700" height="480" loading="lazy" style="width:100%; height:auto;">
             </div>
           </div>
         </div>
@@ -67,9 +67,9 @@ function renderAboutPage() {
     <!-- Mission & Vision -->
     <section class="section">
       <div class="container">
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+        <div class="two-col-cards-grid">
           <!-- Mission -->
-          <div style="background:#fff; border:1px solid var(--color-border); border-radius:var(--radius-xl); padding:40px; position:relative; overflow:hidden;">
+          <div class="mission-vision-card">
             <div style="width:48px; height:48px; border-radius:12px; background:var(--color-primary-yellow-light); display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:20px;">
               🎯
             </div>
@@ -81,7 +81,7 @@ function renderAboutPage() {
           </div>
 
           <!-- Vision -->
-          <div style="background:#fff; border:1px solid var(--color-border); border-radius:var(--radius-xl); padding:40px; position:relative; overflow:hidden;">
+          <div class="mission-vision-card">
             <div style="width:48px; height:48px; border-radius:12px; background:var(--color-primary-yellow-light); display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:20px;">
               🌟
             </div>

@@ -500,7 +500,7 @@ Please share course details and availability.`;
     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Selector targeting all key content cards and components
-    const selector = '.service-card, .step-card, .commitment-card, .curriculum-card, .language-card, .faq-item, .contact-consultation-card, .testimonial-card, .course-card-item';
+    const selector = '.service-card, .step-card, .commitment-card, .curriculum-card, .language-card, .faq-item, .contact-consultation-card, .testimonial-card, .course-card-item, .mission-vision-card, .stage-card';
     const elements = document.querySelectorAll(selector);
 
     if (elements.length === 0) return;

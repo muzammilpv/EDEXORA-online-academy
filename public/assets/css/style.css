@@ -738,7 +738,8 @@ body.mobile-nav-open .hamburger-line::after {
 .hero-trust-badges {
   display: flex;
   align-items: center;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 16px 24px;
   padding-top: var(--space-lg);
   border-top: 1px solid var(--color-border);
   animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
@@ -1768,14 +1769,69 @@ body.mobile-nav-open .hamburger-line::after {
   color: var(--color-text-secondary);
 }
 
+/* Inner Page Responsive Layout Grids */
+.split-layout-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.two-col-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.mission-vision-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+.mission-vision-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-black);
+}
+
+.three-col-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.stage-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+.stage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-black);
+}
+
 /* Contact Consultation Card */
 .contact-consultation-card {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 44px 36px;
+  box-shadow: var(--shadow-md);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
 }
 .contact-consultation-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg) !important;
-  border-color: rgba(255, 201, 40, 0.8) !important;
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(255, 201, 40, 0.8);
 }
 
 /* Filter controls for Courses page */
@@ -1853,7 +1909,9 @@ body.mobile-nav-open .hamburger-line::after {
 .commitments-grid .reveal-item:nth-child(2),
 .steps-grid .reveal-item:nth-child(2),
 .curriculum-grid .reveal-item:nth-child(2),
-.languages-grid .reveal-item:nth-child(2) {
+.languages-grid .reveal-item:nth-child(2),
+.three-col-cards-grid .reveal-item:nth-child(2),
+.two-col-cards-grid .reveal-item:nth-child(2) {
   transition-delay: 0.08s;
 }
 
@@ -1861,7 +1919,8 @@ body.mobile-nav-open .hamburger-line::after {
 .commitments-grid .reveal-item:nth-child(3),
 .steps-grid .reveal-item:nth-child(3),
 .curriculum-grid .reveal-item:nth-child(3),
-.languages-grid .reveal-item:nth-child(3) {
+.languages-grid .reveal-item:nth-child(3),
+.three-col-cards-grid .reveal-item:nth-child(3) {
   transition-delay: 0.16s;
 }
 
@@ -1880,9 +1939,32 @@ body.mobile-nav-open .hamburger-line::after {
   transition-delay: 0.40s;
 }
 
-/* --- 18. RESPONSIVE DESIGN --- */
+/* --- 18. RESPONSIVE DESIGN (Laptop, Tablet & Mobile) --- */
+
+/* 18.1 Compact Laptops (1025px – 1180px) */
+@media (max-width: 1180px) {
+  .nav-desktop {
+    gap: 16px;
+  }
+
+  .nav-link {
+    font-size: 0.84375rem;
+    white-space: nowrap;
+  }
+}
+
+/* 18.2 Tablets & iPads (<= 1024px) */
 @media (max-width: 1024px) {
-  .hero-grid {
+  .nav-desktop {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: flex;
+  }
+
+  .hero-grid,
+  .split-layout-grid {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
   }
@@ -1891,12 +1973,14 @@ body.mobile-nav-open .hamburger-line::after {
     max-width: 100%;
   }
 
-  .services-grid,
-  .commitments-grid,
-  .curriculum-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .hero-image-card {
+    transform: none;
   }
 
+  .services-grid,
+  .commitments-grid,
+  .curriculum-grid,
+  .three-col-cards-grid,
   .steps-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1911,35 +1995,76 @@ body.mobile-nav-open .hamburger-line::after {
   }
 }
 
+/* 18.3 Mobile Phones & Portrait Tablets (<= 768px) */
 @media (max-width: 768px) {
   :root {
-    --header-height: 70px;
-    --space-4xl: 64px;
-    --space-3xl: 48px;
-    --space-2xl: 32px;
+    --header-height: 68px;
+    --space-4xl: 56px;
+    --space-3xl: 40px;
+    --space-2xl: 28px;
   }
 
-  .nav-desktop {
-    display: none;
-  }
-
-  .mobile-nav-toggle {
-    display: flex;
+  .header.scrolled {
+    height: 64px;
   }
 
   .header-actions .btn {
-    display: none; /* Keep header minimal on mobile, accessible in drawer */
+    display: none; /* Accessible inside mobile navigation drawer */
+  }
+
+  .section-title {
+    font-size: clamp(1.65rem, 5vw, 2.1rem);
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
   }
 
   .services-grid,
   .commitments-grid,
   .curriculum-grid,
+  .three-col-cards-grid,
+  .two-col-cards-grid,
   .steps-grid {
     grid-template-columns: 1fr;
   }
 
   .languages-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mission-vision-card,
+  .stage-card {
+    padding: 28px 22px;
+  }
+
+  .contact-consultation-card {
+    padding: 30px 22px;
+  }
+
+  .cta-banner {
+    padding: 40px 22px;
+  }
+
+  .modal-dialog {
+    padding: 28px 20px;
+    border-radius: var(--radius-lg);
+    max-height: 92vh;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+
+  .filter-selects {
+    width: 100%;
+  }
+
+  .filter-select {
+    flex: 1;
+    min-width: 140px;
   }
 
   .footer-grid {
@@ -1967,23 +2092,63 @@ body.mobile-nav-open .hamburger-line::after {
   }
 
   .hero-floating-pill {
-    left: 10px;
-    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 12px 16px;
   }
 }
 
+/* 18.4 Small Mobile Phones (<= 480px) */
 @media (max-width: 480px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .brand-logo-wrap {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand-name {
+    font-size: 1.125rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.625rem;
+  }
+
   .languages-grid {
     grid-template-columns: 1fr;
   }
 
-  .hero-actions {
+  .hero-actions,
+  .page-header-actions,
+  .cta-banner-actions {
     flex-direction: column;
     width: 100%;
   }
 
-  .hero-actions .btn {
+  .hero-actions .btn,
+  .page-header-actions .btn,
+  .cta-banner-actions .btn {
     width: 100%;
+  }
+
+  .hero-trust-badges {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .faq-trigger {
+    padding: 16px 18px;
+    font-size: 0.96875rem;
+  }
+
+  .faq-body {
+    padding: 0 18px 18px 18px;
   }
 }
 

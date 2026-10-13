@@ -42,7 +42,7 @@ function renderSchoolTuitionPage() {
         <p class="page-header-subtitle">
           Dedicated one-to-one tuition tailored to your child’s school syllabus, pace, and examination goals across Kerala State, CBSE, and ICSE boards.
         </p>
-        <div style="margin-top: 24px; display:flex; gap:16px; flex-wrap:wrap;">
+        <div class="page-header-actions" style="margin-top: 24px; display:flex; gap:16px; flex-wrap:wrap;">
           <button type="button" class="btn btn-primary btn-lg" data-open-demo data-demo-interest="School Tuition">
             Enquire About School Tuition
           </button>
@@ -56,7 +56,7 @@ function renderSchoolTuitionPage() {
     <!-- Overview & Photo -->
     <section class="section section-alt">
       <div class="container">
-        <div style="display:grid; grid-template-columns: 1.1fr 0.9fr; gap:48px; align-items:center;">
+        <div class="split-layout-grid">
           <div>
             <span class="eyebrow">Academic Focus</span>
             <h2 class="section-title">One-to-One Attention for Real Conceptual Clarity</h2>
@@ -67,23 +67,23 @@ function renderSchoolTuitionPage() {
               At EDEXORA, our one-to-one online format ensures that the entire session is structured solely around your child. Whether they need assistance with everyday homework, thorough revision for term examinations, or focused problem-solving in challenging subjects, our tutors adapt to their learning style.
             </p>
             <ul style="display:flex; flex-direction:column; gap:12px; margin-bottom:28px;">
-              <li style="display:flex; align-items:center; gap:10px; font-weight:600;">
-                <span style="color:var(--color-primary-yellow); background:#111; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px;">✓</span>
-                Targeted doubt clarification without classroom hesitation
+              <li style="display:flex; align-items:flex-start; gap:10px; font-weight:600;">
+                <span style="color:var(--color-primary-yellow); background:#111; width:22px; height:22px; flex-shrink:0; margin-top:2px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px;">✓</span>
+                <span>Targeted doubt clarification without classroom hesitation</span>
               </li>
-              <li style="display:flex; align-items:center; gap:10px; font-weight:600;">
-                <span style="color:var(--color-primary-yellow); background:#111; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px;">✓</span>
-                Regular chapter-wise assessments and revision support
+              <li style="display:flex; align-items:flex-start; gap:10px; font-weight:600;">
+                <span style="color:var(--color-primary-yellow); background:#111; width:22px; height:22px; flex-shrink:0; margin-top:2px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px;">✓</span>
+                <span>Regular chapter-wise assessments and revision support</span>
               </li>
-              <li style="display:flex; align-items:center; gap:10px; font-weight:600;">
-                <span style="color:var(--color-primary-yellow); background:#111; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px;">✓</span>
-                Convenient schedules suited to students in Kerala and Gulf timezones
+              <li style="display:flex; align-items:flex-start; gap:10px; font-weight:600;">
+                <span style="color:var(--color-primary-yellow); background:#111; width:22px; height:22px; flex-shrink:0; margin-top:2px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px;">✓</span>
+                <span>Convenient schedules suited to students in Kerala and Gulf timezones</span>
               </li>
             </ul>
           </div>
           <div>
             <div style="border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow-lg); border:1px solid var(--color-border);">
-              <img src="/assets/images/school_tuition.jpg" alt="Dedicated school tuition with digital tablet and notebook" width="700" height="500" loading="lazy">
+              <img src="/assets/images/school_tuition.jpg" alt="Dedicated school tuition with digital tablet and notebook" width="700" height="500" loading="lazy" style="width:100%; height:auto;">
             </div>
           </div>
         </div>
@@ -152,8 +152,8 @@ function renderSchoolTuitionPage() {
           </p>
         </div>
 
-        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:24px;">
-          <div style="background:#fff; border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:32px;">
+        <div class="three-col-cards-grid">
+          <div class="stage-card">
             <div style="font-size:2rem; font-weight:800; color:var(--color-primary-yellow); margin-bottom:8px;">KG – Class 4</div>
             <h4 style="font-size:1.1875rem; font-weight:700; margin-bottom:8px;">Early &amp; Primary Foundation</h4>
             <p style="font-size:0.875rem; color:var(--color-text-secondary); line-height:1.6;">
@@ -161,7 +161,7 @@ function renderSchoolTuitionPage() {
             </p>
           </div>
 
-          <div style="background:#fff; border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:32px;">
+          <div class="stage-card">
             <div style="font-size:2rem; font-weight:800; color:var(--color-primary-yellow); margin-bottom:8px;">Class 5 – Class 8</div>
             <h4 style="font-size:1.1875rem; font-weight:700; margin-bottom:8px;">Middle School Growth</h4>
             <p style="font-size:0.875rem; color:var(--color-text-secondary); line-height:1.6;">
@@ -169,7 +169,7 @@ function renderSchoolTuitionPage() {
             </p>
           </div>
 
-          <div style="background:#fff; border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:32px;">
+          <div class="stage-card">
             <div style="font-size:2rem; font-weight:800; color:var(--color-primary-yellow); margin-bottom:8px;">Class 9 &amp; 10</div>
             <h4 style="font-size:1.1875rem; font-weight:700; margin-bottom:8px;">Secondary &amp; Board Focus</h4>
             <p style="font-size:0.875rem; color:var(--color-text-secondary); line-height:1.6;">
