@@ -116,7 +116,9 @@ async function runTests() {
       assert(res.headers['x-frame-options'] === 'SAMEORIGIN', `Route ${route.path} has X-Frame-Options security header`);
       assert(res.headers['x-content-type-options'] === 'nosniff', `Route ${route.path} has nosniff header`);
 
-      // Verify Floating WhatsApp Button is present on every page
+      // Verify Floating Call & WhatsApp Buttons are present on every page
+      assert(res.body.includes('floating-call-btn'), `Route ${route.path} has floating call button`);
+      assert(res.body.includes('tel:+919526180016'), `Route ${route.path} contains direct call link`);
       assert(res.body.includes('floating-whatsapp-btn'), `Route ${route.path} has floating WhatsApp button`);
       assert(res.body.includes('9526180016'), `Route ${route.path} contains official WhatsApp link`);
 
