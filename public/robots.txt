@@ -1,0 +1,6 @@
+# EDEXORA Robots Configuration
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://edexora.com/sitemap.xml

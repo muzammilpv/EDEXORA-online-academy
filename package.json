@@ -1,0 +1,25 @@
+{
+  "name": "edexora-website",
+  "version": "1.0.0",
+  "description": "EDEXORA — From Learning to Excellence. Personalised online one-to-one tuition and education website.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node src/build.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "edexora",
+    "online-tuition",
+    "kerala-education",
+    "cbse",
+    "icse",
+    "madrasa",
+    "languages"
+  ],
+  "author": "EDEXORA",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
