@@ -14,8 +14,12 @@ const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const DATA_DIR = path.join(__dirname, 'data');
 
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch (err) {
+  // Ignore on read-only serverless filesystems
 }
 
 // In-Memory Rate Limiter: IP -> array of timestamps
@@ -73,13 +77,13 @@ const ROUTE_MAP = {
   '/terms': 'terms.html'
 };
 
-const server = http.createServer(async (req, res) => {
+const requestListener = async (req, res) => {
   setSecurityHeaders(res);
 
   const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   const pathname = parsedUrl.pathname.replace(/\/+$/, '') || '/';
-  const method = req.method.toUpperCase();
-  const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
+  const method = (req.method || 'GET').toUpperCase();
+  const clientIp = req.headers['x-forwarded-for'] || (req.socket && req.socket.remoteAddress) || 'unknown';
 
   // 1. API: Health Check
   if (pathname === '/api/health' && method === 'GET') {
@@ -161,9 +165,13 @@ const server = http.createServer(async (req, res) => {
           consent: payload.consent || 'Confirmed'
         };
 
-        // Always save to secure local backup log
-        const backupFile = path.join(DATA_DIR, 'enquiries-backup.jsonl');
-        fs.appendFileSync(backupFile, JSON.stringify(sanitizedSubmission) + '\n', 'utf-8');
+        // Save to local backup log when filesystem is writable
+        try {
+          const backupFile = path.join(DATA_DIR, 'enquiries-backup.jsonl');
+          fs.appendFileSync(backupFile, JSON.stringify(sanitizedSubmission) + '\n', 'utf-8');
+        } catch (err) {
+          // Ignore on read-only serverless filesystems
+        }
 
         // Check if Google Apps Script Webhook is configured
         const googleScriptUrl = CONFIG.integrations.googleScriptWebAppUrl;
@@ -250,7 +258,7 @@ const server = http.createServer(async (req, res) => {
     }
 
     res.writeHead(200, { 'Content-Type': contentType });
-    fs.createReadStream(targetFilePath).pipe(res);
+    res.end(fs.readFileSync(targetFilePath));
     return;
   }
 
@@ -272,7 +280,15 @@ const server = http.createServer(async (req, res) => {
   </div>
 </body>
 </html>`);
-});
+};
+
+const server = http.createServer(requestListener);
+
+const handler = (req, res) => requestListener(req, res);
+handler.listen = server.listen.bind(server);
+handler.close = server.close.bind(server);
+handler.on = server.on.bind(server);
+handler.address = server.address.bind(server);
 
 if (require.main === module) {
   server.listen(PORT, () => {
@@ -283,4 +299,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = server;
+module.exports = handler;

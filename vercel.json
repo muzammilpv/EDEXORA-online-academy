@@ -1,20 +1,8 @@
 {
-  "version": 2,
+  "buildCommand": "node src/build.js",
+  "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/server.js"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
